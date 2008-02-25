@@ -1,0 +1,15 @@
+---
+dns-resolution:
+    domains:
+        ant.local:
+        emo.ant.local:
+            A: 192.168.100.6
+        cookie.ant.local:
+            A: 192.168.100.5
+            CNAME: dan-ip2.ant.local
+
+running-processes:
+    should-run:
+        - dhclient3
+        - /usr/sbin/sshd
+        - /usr/sbin/cron
