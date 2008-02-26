@@ -29,6 +29,8 @@ use Carp::Clan 'croak';
 use FindBin '$Bin';
 use YAML::Syck 'LoadFile';
 
+eval "use Proc::ProcessTable";
+plan 'skip_all' => "need Proc::ProcessTable to run processes tests" if $@;
 
 my $config = LoadFile($Bin.'/test-server.yaml');
 plan 'skip_all' => "no configuration sections for 'running-processes'"
@@ -65,3 +67,16 @@ sub Proc::ProcessTable::is_running {
 	
 	return any { $_->cmndline =~ $process_string } @{$self->table};
 }
+
+
+__END__
+
+=head1 NOTE
+
+Process listing depends on L<Proc::ProcessTable>.
+
+=head1 AUTHOR
+
+Jozef Kutej
+
+=cut

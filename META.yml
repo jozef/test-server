@@ -1,0 +1,27 @@
+---
+name: Test-Server
+version: 0.01
+author:
+  - 'Jozef Kutej <jozef@kutej.net>'
+abstract: what about test driven administration?
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  List::MoreUtils: 0
+  Socket: 0
+  Test::Differences: 0
+  Test::More: 0
+  YAML::Syck: 0
+recommends:
+  Net::DNS::Resolver: 0
+  Proc::ProcessTable: 0
+  Test::WWW::Mechanize: 0
+provides:
+  Test::Server:
+    file: lib/Test/Server.pm
+    version: 0.01
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

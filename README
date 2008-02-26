@@ -1,52 +1,90 @@
-Test-Server
+NAME
+    Test::Server - what about test driven administration?
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+SYNOPSIS
+            cp -r examples /etc/t
+            cd /etc/t
+            vim test-server.yaml
+            prove /etc/t
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+            use Test::Server;
+            Test::Server->run();
 
+DESCRIPTION
+    Ever heard of test driven development? What about test driven
+    administration? Take a look around examples/ folder for example tests
+    that you can run agains your server.
 
-INSTALLATION
+    The general configuration should be done through the test-server.yaml
+    and should be managable by any non Perl awear admin (are there any?).
+    Ofcourse you are free to put any other test that make sence for your
+    server.
 
-To install this module, run the following commands:
+    The idea behind this is following. You run "prove /etc/t" and everything
+    is fine. Server is up and running. Life is nice. Then somebody calls you
+    at 3am... Ups what went wrong? You login to the server (if possible of
+    course) and run the "prove /etc/t" friend. Something failed? => fix it.
+    Nothing failed? => write a test that will reveal that something is wrong
+    && fix the problem of course ;).
 
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
+    Any other benefits? What about migration || reinstalation of the server?
+    Do you always remember what services || purpouses is the server used
+    for? You just "scp" the /etc/t folder to the new machine and "prove
+    /etc/t" will tell you. If not you'll write a test ;).
 
-SUPPORT AND DOCUMENTATION
+    When you install this module it will bring along testing modules as a
+    dependencie. Check the Build.PL.
 
-After installing, you can find documentation for this module with the
-perldoc command.
+    I hope you'll enjoy the idea as I do. (until I find that there are 30
+    other similar solutions like this...)
 
-    perldoc Test::Server
+METHODS
+  run()
+    For the moment just runs "prove /etc/t". Any other better idea?
 
-You can also look for information at:
+examples/
+    I have tried to organize examples/ a little bit. Tests with 01_* should
+    be run directly on the server. The other should run also remotely. Than
+    there can be a central "test" server that will collect all /etc/t
+    folders (without 01_*) and the test could be run also remotely. Testing
+    remote access to the services. Store the collected test in
+    /folder/server_name, run "prove -r /folder" and watch how everything
+    works(?)!.
 
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-Server
+    The tests starting with 02_* should be essential but short running tests
+    that should work in all cases and the rest of the tests will most likely
+    fail if they do.
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Test-Server
+  files
+    01_hostname-and-interfaces.t
+        check hostname and ip resolution on interfaces
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Test-Server
+    01_running-processes.t
+        check running processes
 
-    Search CPAN
-        http://search.cpan.org/dist/Test-Server
+    02_dns-resolution.t
+        query dns server and check for the answers
 
+    03_sites-ok.t
+        check web sites
 
-COPYRIGHT AND LICENCE
+sky
+    There are no restrictions in Perl and there are no best solutions => so
+    the sky is the limit! (Or we our self are the limit?)
 
-Copyright (C) 2008 Jozef Kutej
+TODO
+    Any wishes || good ideas for general server tests should go here. Do you
+    have any? Send it! Or even better send the .t file.
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+            * check if all the interfaces has dns revers rr that properly resolves back
+
+AUTHOR
+    Jozef Kutej
+
+COPYRIGHT AND LICENSE
+    Copyright (C) 2006 by Jozef Kutej
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself, either Perl version 5.8.4 or, at
+    your option, any later version of Perl 5 you may have available.
 

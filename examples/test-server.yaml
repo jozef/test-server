@@ -13,3 +13,13 @@ running-processes:
         - dhclient3
         - /usr/sbin/sshd
         - /usr/sbin/cron
+
+sites-ok:
+    sites:
+        http://ant.local:
+            content: It works!
+        http://debrepo.ant.local/debian/:
+            title  : Index of /[a-z]+
+            content: Parent Directory
+
+

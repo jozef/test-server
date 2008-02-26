@@ -12,9 +12,9 @@ dns-resolution.t - query dns server and check for the answers
 	        somedomain.org:
 	        someother.com:
 	            A: 192.168.100.6
-	        thirdone.com:
+	        thirdomaine.com:
 	            A: 192.168.100.5
-	            CNAME: dan-ip2.ant.local
+	            CNAME: ip2-somedomain.com
 	__YAML_END__
 
 =cut
@@ -25,7 +25,6 @@ use warnings;
 use Test::More;
 #use Test::More tests => 1;
 use Test::Differences;
-use Test::Exception;
 use YAML::Syck 'LoadFile';
 use FindBin '$Bin';
 
@@ -45,17 +44,28 @@ sub main {
 	my $domains = $config->{'dns-resolution'}->{'domains'};
 	my $res = Net::DNS::Resolver->new;
 	
+	# loop through domains that need to be checked
 	foreach my $domain (keys %$domains) {
-		my $query = $res->search($domain);
-		ok($query, 'lookup '.$domain) or next;
+		# lookup domain, if fial skip the rest of the tests for it
+		my $answer = $res->search($domain);
+		ok($answer, 'lookup '.$domain) or next;
 		
+		# what rrs need to be tested
 		my $expected_rrs = $domains->{$domain};
 		next if not defined $expected_rrs;
 		
+		# loop through the rrs and test them
 		while (my ($rr_type, $rr_value) = each %{$expected_rrs}) {
-			is_deeply(
-				[ $query->answer_rr_with_type($rr_type) ],
-				[ $rr_value ],
+			# make array of the expected value
+			my @rr_values = (
+				ref $rr_value ne 'ARRAY'
+				? $rr_value
+				: @$rr_value
+			);
+			
+			eq_or_diff(
+				[ $answer->rr_with_type($rr_type) ],
+				[ sort @rr_values ],
 				'check dns '.$rr_type.' answer',
 			);
 		}
@@ -65,7 +75,7 @@ sub main {
 }
 
 
-sub Net::DNS::Packet::answer_rr_with_type {
+sub Net::DNS::Packet::rr_with_type {
 	my $self    = shift;
 	my $rr_type = shift;
 	
@@ -80,5 +90,18 @@ sub Net::DNS::Packet::answer_rr_with_type {
 		);
 	}
 	
-	return @rrs_answer;
+	return sort @rrs_answer;
 }
+
+
+__END__
+
+=head1 NOTE
+
+DNS resolution depends on L<Net::DNS::Resolver>.
+
+=head1 AUTHOR
+
+Jozef Kutej
+
+=cut

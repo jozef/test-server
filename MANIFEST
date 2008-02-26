@@ -1,8 +1,14 @@
 Build.PL
 Changes
-MANIFEST
-README
+examples/01_hostname-and-interfaces.t
+examples/01_running-processes.t
+examples/02_dns-resolution.t
+examples/03_sites-ok.t
+examples/test-server.yaml
 lib/Test/Server.pm
+MANIFEST
+META.yml
+README
 t/00-load.t
 t/pod-coverage.t
 t/pod.t

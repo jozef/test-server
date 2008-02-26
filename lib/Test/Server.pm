@@ -21,8 +21,8 @@ Take a look around F<examples/> folder for example tests that you can run
 agains your server.
 
 The general configuration should be done through the F<test-server.yaml> and should
-be managable by any non Perl awear admin (are there any?). But you are free to put any
-other test that make sence for your server.
+be managable by any non Perl awear admin (are there any?). Ofcourse you are free to
+put any other test that make sence for your server.
 
 The idea behind this is following. You run C<prove /etc/t> and everything is
 fine. Server is up and running. Life is nice. Then somebody calls you at 3am...
@@ -35,6 +35,9 @@ Any other benefits? What about migration || reinstalation of the server? Do you
 always remember what services || purpouses is the server used for? You just
 C<scp> the F</etc/t> folder to the new machine and C<prove /etc/t> will tell
 you. If not you'll write a test ;).
+
+When you install this module it will bring along testing modules as a
+dependencie. Check the F<Build.PL>.
 
 I hope you'll enjoy the idea as I do. (until I find that there are 30 other
 similar solutions like this...)
@@ -74,6 +77,32 @@ and the test could be run also remotely. Testing remote access to the services.
 Store the collected test in F</folder/server_name>, run C<prove -r /folder> and
 watch how everything works(?)!. 
 
+The tests starting with F<02_*> should be essential but short running tests that
+should work in all cases and the rest of the tests will most likely fail if they
+do.
+
+=head2 files
+
+=over 4
+
+=item 01_hostname-and-interfaces.t
+
+check hostname and ip resolution on interfaces
+
+=item 01_running-processes.t
+
+check running processes
+
+=item 02_dns-resolution.t
+
+query dns server and check for the answers
+
+=item 03_sites-ok.t
+
+check web sites
+
+=back
+
 =head1 sky
 
 There are no restrictions in Perl and there are no best solutions => so the
@@ -83,6 +112,8 @@ sky is the limit! (Or we our self are the limit?)
 
 Any wishes || good ideas for general server tests should go here.
 Do you have any? Send it! Or even better send the .t file.
+
+	* check if all the interfaces has dns revers rr that properly resolves back
 
 =head1 AUTHOR
 
