@@ -15,6 +15,7 @@ my $builder = Module::Build->new(
     	'YAML::Syck'        => 0,
     	'Socket'            => 0,
     	'List::MoreUtils'   => 0,
+    	'Carp::Clan'        => 0,
     },
     recommends          => {
     	'Net::DNS::Resolver'   => 0,

@@ -22,8 +22,6 @@ use warnings;
 
 use Test::More;
 use Test::Differences;
-use Test::Exception;
-use Proc::ProcessTable;
 use List::MoreUtils 'any';
 use Carp::Clan 'croak';
 use FindBin '$Bin';

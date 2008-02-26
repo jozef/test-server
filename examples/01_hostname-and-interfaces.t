@@ -96,7 +96,7 @@ sub main {
 					$_->{'hostname'}
 					&& ($_->{'hostname'} ne $_->{'ip'})
 					? $_->{'ip'}
-					: ''
+					: 'not resolving'
 				} values %if_named ],
 			[ map { $_->{'ip'} } values %if_named ],
 			'every interface ip should resolv to a name',	
