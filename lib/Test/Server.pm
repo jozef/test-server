@@ -29,15 +29,15 @@ fine. Server is up and running. Life is nice. Then somebody calls you at 3am...
 Ups what went wrong? You login to the server (if possible of course) and run
 the C<prove /etc/t> friend. Something failed? => fix it. Nothing failed?
 => write a test that will reveal that something is wrong && fix the problem
-of course ;).
+of course ;). And then at 6am go happily to sleep again...
+
+To be the administration really test drive ;) you should be writing your tests
+before you install the server...
 
 Any other benefits? What about migration || reinstalation of the server? Do you
 always remember what services || purpouses is the server used for? You just
 C<scp> the F</etc/t> folder to the new machine and C<prove /etc/t> will tell
 you. If not you'll write a test ;).
-
-When you install this module it will bring along testing modules as a
-dependencie. Check the F<Build.PL>.
 
 I hope you'll enjoy the idea as I do. (until I find that there are 30 other
 similar solutions like this...)
@@ -114,6 +114,8 @@ Any wishes || good ideas for general server tests should go here.
 Do you have any? Send it! Or even better send the .t file.
 
 	* check if all the interfaces has dns revers rr that properly resolves back
+	* check open ports
+	* I should write some easy example test for non perl admins
 
 =head1 AUTHOR
 
