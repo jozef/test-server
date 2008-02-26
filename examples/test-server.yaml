@@ -1,12 +1,12 @@
 ---
 dns-resolution:
     domains:
-        ant.local:
-        emo.ant.local:
-            A: 192.168.100.6
-        cookie.ant.local:
-            A: 192.168.100.5
-            CNAME: dan-ip2.ant.local
+        bratislava.pm.org:
+        camel.cle.sk:
+            A: 81.89.49.242
+        bratislava.pm.org:
+            A: 81.89.49.242
+            CNAME: camel.cle.sk
 
 running-processes:
     should-run:
@@ -16,10 +16,10 @@ running-processes:
 
 sites-ok:
     sites:
-        http://ant.local:
-            content: It works!
-        http://debrepo.ant.local/debian/:
-            title  : Index of /[a-z]+
-            content: Parent Directory
+        http://bratislava.pm.org:
+            content: Kontakt
+        http://www.pm.org/groups/121.html:
+            title  : Perl .+
+            content: Bratislava
 
 
