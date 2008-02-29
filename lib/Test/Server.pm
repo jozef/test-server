@@ -116,6 +116,7 @@ Do you have any? Send it! Or even better send the .t file.
 	* check if all the interfaces has dns revers rr that properly resolves back
 	* check open ports
 	* I should write some easy example test for non perl admins
+	* check time synchronization (thanks Emmanuel)
 
 =head1 AUTHOR
 
