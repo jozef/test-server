@@ -36,6 +36,9 @@ DESCRIPTION
     for? You just "scp" the /etc/t folder to the new machine and "prove
     /etc/t" will tell you. If not you'll write a test ;).
 
+    Or are you writing firewall rules and need to check if you didn't close
+    some ports that you should not? Check out the 03_open-ports.t.
+
     I hope you'll enjoy the idea as I do. (until I find that there are 30
     other similar solutions like this...)
 
@@ -69,6 +72,9 @@ examples/
     03_sites-ok.t
         check web sites
 
+    03_open-ports.t
+        Check if the ports are open and if the service is responding.
+
 sky
     There are no restrictions in Perl and there are no best solutions => so
     the sky is the limit! (Or we our self are the limit?)
@@ -80,6 +86,11 @@ TODO
             * check if all the interfaces has dns revers rr that properly resolves back
             * check open ports
             * I should write some easy example test for non perl admins
+            * check time synchronization (thanks Emmanuel)
+            * check if all nameservers in /etc/resolv.conf are reachable
+            * run command and check the output (thanks Aldo)
+            * file directory permissions for all relevant application directories
+              (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
 
 AUTHOR
     Jozef Kutej

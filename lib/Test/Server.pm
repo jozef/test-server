@@ -50,7 +50,7 @@ similar solutions like this...)
 use warnings;
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 METHODS
 
@@ -103,6 +103,10 @@ query dns server and check for the answers
 =item 03_sites-ok.t
 
 check web sites
+
+=item 03_open-ports.t
+
+Check if the ports are open and if the service is responding.
 
 =back
 

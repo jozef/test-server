@@ -22,4 +22,12 @@ sites-ok:
             title  : Perl .+
             content: Bratislava
 
+open-ports:
+    connect:
+        localhost:
+            22: ssh
+        bratislava.pm.org:
+            80: http
+        camel.cle.sk:
+            443: https
 

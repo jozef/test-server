@@ -16,6 +16,8 @@ my $builder = Module::Build->new(
     	'Socket'            => 0,
     	'List::MoreUtils'   => 0,
     	'Carp::Clan'        => 0,
+	# Test::Net::Service dependecies
+    	'IO::Socket::INET'  => 0,
     },
     recommends          => {
     	'Net::DNS::Resolver'   => 0,
@@ -23,10 +25,9 @@ my $builder = Module::Build->new(
     	'Proc::ProcessTable'   => 0,
     },
     add_to_cleanup      => [ 'Test-Server-*' ],
-#    create_makefile_pl  => 'traditional',
+    create_makefile_pl  => 'traditional',
     sign                => 1,
     create_readme       => 1,
-    
 );
 
 $builder->create_build_script();
