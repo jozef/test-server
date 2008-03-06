@@ -39,6 +39,9 @@ always remember what services || purpouses is the server used for? You just
 C<scp> the F</etc/t> folder to the new machine and C<prove /etc/t> will tell
 you. If not you'll write a test ;).
 
+Or are you writing firewall rules and need to check if you didn't close some
+ports that you should not? Check out the F<03_open-ports.t>.
+
 I hope you'll enjoy the idea as I do. (until I find that there are 30 other
 similar solutions like this...)
 
@@ -117,6 +120,10 @@ Do you have any? Send it! Or even better send the .t file.
 	* check open ports
 	* I should write some easy example test for non perl admins
 	* check time synchronization (thanks Emmanuel)
+	* check if all nameservers in /etc/resolv.conf are reachable
+	* run command and check the output (thanks Aldo)
+	* file directory permissions for all relevant application directories
+	  (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
 
 =head1 AUTHOR
 
