@@ -128,6 +128,7 @@ Do you have any? Send it! Or even better send the .t file.
 	* run command and check the output (thanks Aldo)
 	* file directory permissions for all relevant application directories
 	  (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
+	* check folders if the files (logs?) didn't grow too huge
 
 =head1 AUTHOR
 
