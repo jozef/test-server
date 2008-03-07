@@ -1,5 +1,9 @@
 Revision history for Test-Server
 
+0.02     7. Mar 2008
+        * test for open ports and services
+        * more todo
+
 0.01    26. Feb 2008
         First release to check what others think about it
 
