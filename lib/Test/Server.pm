@@ -130,6 +130,12 @@ Do you have any? Send it! Or even better send the .t file.
 	  (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
 	* check folders if the files (logs?) didn't grow too huge
 
+=head1 LINKS
+
+L<http://testanything.org/>,
+L<http://en.wikipedia.org/wiki/Test_Anything_Protocol>
+and a book "Perl Testing: A Developer's Notebook"
+
 =head1 AUTHOR
 
 Jozef Kutej
