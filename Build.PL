@@ -16,6 +16,8 @@ my $builder = Module::Build->new(
     	'Socket'            => 0,
     	'List::MoreUtils'   => 0,
     	'Carp::Clan'        => 0,
+    	'Class::Accessor::Fast'
+    	                    => 0,
 	# Test::Net::Service dependecies
     	'IO::Socket::INET'  => 0,
     },
