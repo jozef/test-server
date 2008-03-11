@@ -22,7 +22,7 @@ use Test::More 'tests' => 5;
 use Test::Differences;
 
 use List::MoreUtils 'any';
-use Socket 'inet_ntoa', 'inet_aton', 'AF_INET';
+use Sys::Net 'resolv', 'interfaces';
 
 my $HOSTNAME_CMD = 'hostname';
 my $IFCONFIG_CMD = '/sbin/ifconfig';
@@ -73,7 +73,7 @@ sub main {
 			if not defined $ifconfig;
 		
 		# get interfaces
-		my %if_named = %{get_ifnames_with_ip()};
+		my %if_named = %{interfaces()};
 
 		ok(
 			(any { $_->{'ip'} eq $hostname_fqdn_ip } values %if_named ),
@@ -107,76 +107,7 @@ sub main {
 }
 
 
-=head1 INTERNAL METHODS
-
-=head2 resolv()
-
-Resolv hostname to an ip or ip to an hostname.
-
-=cut
-
-sub resolv {
-	my $name = shift;
-	
-	# resolv ip to a hostname
-	if ($name =~ m/^\s*[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\s*$/) {
-		return scalar gethostbyaddr(inet_aton($name), AF_INET);
-	}
-	# resolv hostname to ip
-	else {
-		return inet_ntoa(scalar gethostbyname($name));
-	}
-}
-
-
-=head2 get_ifnames_with_ip()
-
-returns hash ref with:
-
-	{
-		'lo'   => { 'ip' => '127.0.0.1'     },
-		'eth0' => { 'ip' => '192.168.100.6' },
-	};
-
-
-=cut
-
-sub get_ifnames_with_ip {
-	my @ifconfig_out = `$IFCONFIG_CMD`;
-	my %if_named;
-	
-	my $ifname;
-	my $ifip;
-	foreach my $line (@ifconfig_out) {
-		# empty line resets the values
-		if ($line =~ /^\s*$/) {
-			$ifname = undef;
-			$ifip   = undef;
-		}
-
-		# get columns 1, 2, 3
-		my ($c1,$c2,$c3) = split /\s+/, $line;
-
-		# get interface name
-		$ifname = $c1
-			if $c2 eq 'Link';
-		# get ip address
-		($ifip) = $c3 =~ m/addr:(.+)/
-			if $c2 eq 'inet';
-		
-		# if we have both ip and interface name store it
-		$if_named{$ifname} = { 'ip' => $ifip }
-			if ($ifname and $ifip);
-	}
-	
-	return \%if_named;
-}
-
 __END__
-
-=head1 NOTE
-
-Not too portable... Runs on linux and should skip the tests on different OSes.
 
 =head1 AUTHOR
 

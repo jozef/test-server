@@ -50,7 +50,7 @@ similar solutions like this...)
 use warnings;
 use strict;
 
-our $VERSION = '0.02';
+our $VERSION = '0.02_01';
 
 =head1 METHODS
 
@@ -100,6 +100,10 @@ check running processes
 
 query dns server and check for the answers
 
+=item 02_resolv.conf.t
+
+query all nameserver-s in /etc/resolv.conf and make sure all are reachable.
+
 =item 03_sites-ok.t
 
 check web sites
@@ -121,14 +125,14 @@ Any wishes || good ideas for general server tests should go here.
 Do you have any? Send it! Or even better send the .t file.
 
 	* check if all the interfaces has dns revers rr that properly resolves back
-	* check open ports
 	* I should write some easy example test for non perl admins
 	* check time synchronization (thanks Emmanuel)
-	* check if all nameservers in /etc/resolv.conf are reachable
 	* run command and check the output (thanks Aldo)
 	* file directory permissions for all relevant application directories
 	  (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
 	* check folders if the files (logs?) didn't grow too huge
+	
+	* create Test::Server::Smoke to try examples on smoke testing servers
 
 =head1 LINKS
 

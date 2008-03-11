@@ -31,3 +31,6 @@ open-ports:
         camel.cle.sk:
             443: https
 
+resolv.conf:
+    dns_retry  : 3
+    dns_timeout: 5

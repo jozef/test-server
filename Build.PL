@@ -8,16 +8,17 @@ my $builder = Module::Build->new(
 	dist_author         => 'Jozef Kutej <jozef@kutej.net>',
 	dist_version_from   => 'lib/Test/Server.pm',
 	build_requires      => {
-    },
-	requires            => {
 		'Test::More'        => 0,
 		'Test::Differences' => 0,
+    },
+	requires            => {
     	'YAML::Syck'        => 0,
     	'Socket'            => 0,
     	'List::MoreUtils'   => 0,
     	'Carp::Clan'        => 0,
     	'Class::Accessor::Fast'
     	                    => 0,
+    	'File::Slurp'       => 0,
 	# Test::Net::Service dependecies
     	'IO::Socket::INET'  => 0,
     },
