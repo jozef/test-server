@@ -50,7 +50,7 @@ similar solutions like this...)
 use warnings;
 use strict;
 
-our $VERSION = '0.02_01';
+our $VERSION = '0.02_02';
 
 =head1 METHODS
 
@@ -104,6 +104,12 @@ query dns server and check for the answers
 
 query all nameserver-s in /etc/resolv.conf and make sure all are reachable.
 
+=item 02_time-sync.t
+
+compare local machine time with a ntp server to make sure both are in the sync.
+
+For the idea thanks to Emmanuel Santiago Rodriguez.
+
 =item 03_sites-ok.t
 
 check web sites
@@ -111,6 +117,12 @@ check web sites
 =item 03_open-ports.t
 
 Check if the ports are open and if the service is responding.
+
+=item 03_cmd-output.t
+
+Check the output of the shell command with a regexp. Check the exit code.
+
+For the idea thanks to Aldo Calpini.
 
 =back
 
@@ -126,8 +138,6 @@ Do you have any? Send it! Or even better send the .t file.
 
 	* check if all the interfaces has dns revers rr that properly resolves back
 	* I should write some easy example test for non perl admins
-	* check time synchronization (thanks Emmanuel)
-	* run command and check the output (thanks Aldo)
 	* file directory permissions for all relevant application directories
 	  (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
 	* check folders if the files (logs?) didn't grow too huge

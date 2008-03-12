@@ -2,7 +2,9 @@ Revision history for Test-Server
 
 0.03   
     * check if all nameservers in /etc/resolv.conf are reachable
-    
+    * Sys::Net modules
+    * check time synchronization
+    * check shell command output and exit code
 
 0.02     7. Mar 2008
     * test for open ports and services

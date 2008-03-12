@@ -1,12 +1,14 @@
 ---
 name: Test-Server
-version: 0.02
+version: 0.02_02
 author:
   - 'Jozef Kutej <jozef@kutej.net>'
 abstract: what about test driven administration?
 license: perl
 requires:
   Carp::Clan: 0
+  Class::Accessor::Fast: 0
+  File::Slurp: 0
   IO::Socket::INET: 0
   List::MoreUtils: 0
   Socket: 0
@@ -15,13 +17,15 @@ requires:
   YAML::Syck: 0
 recommends:
   Net::DNS::Resolver: 0
+  Net::NTP: 0
   Proc::ProcessTable: 0
   Test::WWW::Mechanize: 0
+  Time::HiRes: 0
 provides:
   Test::Net::Service:
     file: lib/Test/Net/Service.pm
     version: 0.01
   Test::Server:
     file: lib/Test/Server.pm
-    version: 0.02
+    version: 0.02_02
 generated_by: Module::Build version 0.26

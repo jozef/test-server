@@ -7,13 +7,15 @@ WriteMakefile
           'NAME' => 'Test::Server',
           'VERSION_FROM' => 'lib/Test/Server.pm',
           'PREREQ_PM' => {
+                           'IO::Socket::INET' => 0,
+                           'YAML::Syck' => 0,
+                           'Class::Accessor::Fast' => 0,
                            'Test::More' => 0,
                            'Test::Differences' => 0,
-                           'IO::Socket::INET' => 0,
                            'Carp::Clan' => 0,
-                           'YAML::Syck' => 0,
                            'Socket' => 0,
-                           'List::MoreUtils' => 0
+                           'List::MoreUtils' => 0,
+                           'File::Slurp' => 0
                          }
         )
 ;
