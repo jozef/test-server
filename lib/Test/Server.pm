@@ -21,12 +21,12 @@ Take a look around F<examples/> folder for example tests that you can run
 agains your server.
 
 The general configuration should be done through the F<test-server.yaml> and should
-be managable by any non Perl awear admin (are there any?). Ofcourse you are free to
+be managable by any non Perl awear admin (are there any?). Of course you are free to
 put any other test that make sence for your server.
 
-The idea behind this is following. You run C<prove /etc/t> and everything is
+The idea behind this is following: You run C<prove /etc/t> and everything is
 fine. Server is up and running. Life is nice. Then somebody calls you at 3am...
-Ups what went wrong? You login to the server (if possible of course) and run
+Oups! What went wrong? You login to the server (if possible of course) and run
 the C<prove /etc/t> friend. Something failed? => fix it. Nothing failed?
 => write a test that will reveal that something is wrong && fix the problem
 of course ;). And then at 6am go happily to sleep again...
