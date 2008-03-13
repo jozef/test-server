@@ -7,6 +7,7 @@ WriteMakefile
           'NAME' => 'Test::Server',
           'VERSION_FROM' => 'lib/Test/Server.pm',
           'PREREQ_PM' => {
+                           'Test::Exception' => 0,
                            'IO::Socket::INET' => 0,
                            'YAML::Syck' => 0,
                            'Class::Accessor::Fast' => 0,

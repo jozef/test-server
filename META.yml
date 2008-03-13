@@ -1,6 +1,6 @@
 ---
 name: Test-Server
-version: 0.02_02
+version: 0.02_03
 author:
   - 'Jozef Kutej <jozef@kutej.net>'
 abstract: what about test driven administration?
@@ -13,6 +13,7 @@ requires:
   List::MoreUtils: 0
   Socket: 0
   Test::Differences: 0
+  Test::Exception: 0
   Test::More: 0
   YAML::Syck: 0
 recommends:
@@ -27,5 +28,5 @@ provides:
     version: 0.01
   Test::Server:
     file: lib/Test/Server.pm
-    version: 0.02_02
+    version: 0.02_03
 generated_by: Module::Build version 0.26
