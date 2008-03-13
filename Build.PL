@@ -12,6 +12,7 @@ my $builder = Module::Build->new(
 	requires            => {
 		'Test::More'        => 0,
 		'Test::Differences' => 0,
+		'Test::Exception'   => 0,
     	'YAML::Syck'        => 0,
     	'Socket'            => 0,
     	'List::MoreUtils'   => 0,
