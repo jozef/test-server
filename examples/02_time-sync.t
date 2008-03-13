@@ -83,6 +83,6 @@ Time checking depends on L<Net::NTP>.
 
 Jozef Kutej
 
-for the idea thanks to Emmanuel Santiago Rodriguez.
+for the idea thanks to Emmanuel Rodriguez Santiago.
 
 =cut

@@ -108,7 +108,7 @@ query all nameserver-s in /etc/resolv.conf and make sure all are reachable.
 
 compare local machine time with a ntp server to make sure both are in the sync.
 
-For the idea thanks to Emmanuel Santiago Rodriguez.
+For the idea thanks to Emmanuel Rodriguez Santiago.
 
 =item 03_sites-ok.t
 
