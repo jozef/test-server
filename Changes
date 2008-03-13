@@ -5,6 +5,8 @@ Revision history for Test-Server
     * Sys::Net modules
     * check time synchronization
     * check shell command output and exit code
+    * dependency fix
+    * spelling fixes
 
 0.02     7. Mar 2008
     * test for open ports and services
