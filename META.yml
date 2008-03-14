@@ -1,6 +1,6 @@
 ---
 name: Test-Server
-version: 0.03
+version: 0.04
 author:
   - 'Jozef Kutej <jozef@kutej.net>'
 abstract: what about test driven administration?
@@ -23,10 +23,13 @@ recommends:
   Test::WWW::Mechanize: 0
   Time::HiRes: 0
 provides:
+  Sys::Net:
+    file: lib/Sys/Net.pm
+    version: 0.01
   Test::Net::Service:
     file: lib/Test/Net/Service.pm
     version: 0.01
   Test::Server:
     file: lib/Test/Server.pm
-    version: 0.03
+    version: 0.04
 generated_by: Module::Build version 0.26
