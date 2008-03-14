@@ -1,5 +1,8 @@
 Revision history for Test-Server
 
+0.04
+    * added missing files to manifest
+
 0.03   
     * check if all nameservers in /etc/resolv.conf are reachable
     * Sys::Net modules
