@@ -1,6 +1,6 @@
 ---
 name: Test-Server
-version: 0.02_03
+version: 0.03
 author:
   - 'Jozef Kutej <jozef@kutej.net>'
 abstract: what about test driven administration?
@@ -28,5 +28,5 @@ provides:
     version: 0.01
   Test::Server:
     file: lib/Test/Server.pm
-    version: 0.02_03
+    version: 0.03
 generated_by: Module::Build version 0.26
