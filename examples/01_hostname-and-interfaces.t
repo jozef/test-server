@@ -25,7 +25,6 @@ use List::MoreUtils 'any';
 use Sys::Net 'resolv', 'interfaces';
 
 my $HOSTNAME_CMD = 'hostname';
-my $IFCONFIG_CMD = '/sbin/ifconfig';
 
 exit main();
 
@@ -67,13 +66,12 @@ sub main {
 	SKIP: {
 		skip 'fqdn not found', 2
 			if not defined $hostname_fqdn_ip;
-
-		my $ifconfig = `$IFCONFIG_CMD`;
-		skip 'ifconfig command not found', 2
-			if not defined $ifconfig;
 		
 		# get interfaces
 		my %if_named = %{interfaces()};
+
+		skip 'no interfaces found', 2
+			if not keys %if_named;
 
 		ok(
 			(any { $_->{'ip'} eq $hostname_fqdn_ip } values %if_named ),

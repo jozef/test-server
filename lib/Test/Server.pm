@@ -124,6 +124,13 @@ Check the output of the shell command with a regexp. Check the exit code.
 
 For the idea thanks to Aldo Calpini.
 
+=item 03_find-huge-files.t
+
+Check folders it there are not too many files and if the files (logs, tmp,
+etc.) didn't grow too large.
+
+
+
 =back
 
 =head1 sky
@@ -140,7 +147,8 @@ Do you have any? Send it! Or even better send the .t file.
 	* I should write some easy example test for non perl admins
 	* file directory permissions for all relevant application directories
 	  (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
-	* check folders if the files (logs?) didn't grow too huge
+	* disk full check (using Filesys::DiskSpace||DiskFree ?)
+	* check disk usage (using Filesys::DiskUsage ?)
 	
 	* create Test::Server::Smoke to try examples on smoke testing servers
 
