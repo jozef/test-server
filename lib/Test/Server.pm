@@ -158,6 +158,9 @@ L<http://testanything.org/>,
 L<http://en.wikipedia.org/wiki/Test_Anything_Protocol>
 and a book "Perl Testing: A Developer's Notebook"
 
+And if you like automated "thinks" check out also L<Sysadm::Install>
+for system admin scripting. Quite nice.
+
 =head1 AUTHOR
 
 Jozef Kutej
