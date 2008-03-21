@@ -67,7 +67,7 @@ sub main {
 			
 			# check size
 			my $size = $file_checks{'max-size'};
-			if ($size) {
+			if (defined $size) {
 				my $du_size = du($filename);
 				cmp_ok($du_size, '<', decode_size($size), 'check '.$filename.' size < '.$size)
 					or diag($filename.' has '.format_size($du_size));
@@ -76,14 +76,26 @@ sub main {
 			my @file_stat = stat($filename);
 			
 			# get uid
-			my $uid = $file_checks{'user'};
-			$uid = getpwnam($uid)
-				if defined $uid and $uid !~ m{^\s*\d+\s*$};
+			my $uid;
+			my $user = $file_checks{'user'};
+			if ($user) {
+			    $uid = $user;
+    			$uid = getpwnam($user)
+    				if $user !~ m{^\s*\d+\s*$};
+    			$uid = $user
+    			    if not defined $uid;
+    		}
 			
 			# get gid
-			my $gid = $file_checks{'group'};
-			$gid = getgrnam($gid)
-				if defined $gid and $gid !~ m{^\s*\d+\s*$};
+			my $gid;
+			my $group = $file_checks{'group'};
+			if ($group) {
+			    $gid = $group;
+    			$gid = getgrnam($group)
+    				if $group !~ m{^\s*\d+\s*$};
+    			$gid = $group
+    			    if not defined $gid;
+    		}
 			
 			# check recursively
 			eq_or_diff(
@@ -114,11 +126,11 @@ sub check_recursively {
 		my $file_perm = sprintf '%lo', $stat[$STAT_PERM] & 07777;
 		
 		push @bad_files, 'bad uid for '.$filename.': '.$file_uid.' does not match '.$uid
-			if ((defined $uid) and ($file_uid != $uid));
+			if ((defined $uid) and ($file_uid ne $uid));
 		push @bad_files, 'bad gid for '.$filename.': '.$file_gid.' does not match '.$gid
-			if ((defined $gid) and ($file_gid != $gid));
+			if ((defined $gid) and ($file_gid ne $gid));
 		push @bad_files, 'bad permissions for '.$filename.': '.$file_perm.' does not match '.$perm
-			if ((defined $perm) and ($file_perm != $perm));
+			if ((defined $perm) and ($file_perm ne $perm));
 
 		if ($recurse and (-d $filename)) {
 			opendir(my $dir_handle, $filename) || return;
@@ -141,12 +153,12 @@ sub decode_size {
 		if not defined $size;
 	
 	die 'failed to parse size: '.$size
-		if ($size !~ m/\b([0-9]+)\s*([MKG])\s*$/);
+		if ($size !~ m/\b([0-9]+)\s*([MKG]?)\s*$/);
 	
 	$size    = $1;
 	my $unit = $2;
 	
-	if (defined $unit) {
+	if ($unit) {
 		  $unit eq 'G' ? $size *= 1024*1024*1024
 		: $unit eq 'M' ? $size *= 1024*1024
 		: $unit eq 'K' ? $size *= 1024

@@ -73,12 +73,12 @@ sub decode_size {
 	my $size = shift;
 	
 	die 'failed to parse size: '.$size
-		if ($size !~ m/\b([0-9]+)\s*([MKG])\s*$/);
+		if ($size !~ m/\b([0-9]+)\s*([MKG]?)\s*$/);
 	
 	$size    = $1;
 	my $unit = $2;
 	
-	if (defined $unit) {
+	if ($unit) {
 		  $unit eq 'G' ? $size *= 1024*1024*1024
 		: $unit eq 'M' ? $size *= 1024*1024
 		: $unit eq 'K' ? $size *= 1024
