@@ -50,7 +50,7 @@ similar solutions like this...)
 use warnings;
 use strict;
 
-our $VERSION = '0.04';
+our $VERSION = '0.04_01';
 
 =head1 METHODS
 
@@ -129,6 +129,12 @@ For the idea thanks to Aldo Calpini.
 Check folders it there are not too many files and if the files (logs, tmp,
 etc.) didn't grow too large.
 
+=item 03_folder-file.t
+
+File directory permissions and sizes for a directories
+(e.g. Is cache dir writeable for httpd)
+
+For the idea thanks to Peter Hartl.
 
 
 =back
@@ -145,10 +151,7 @@ Do you have any? Send it! Or even better send the .t file.
 
 	* check if all the interfaces has dns revers rr that properly resolves back
 	* I should write some easy example test for non perl admins
-	* file directory permissions for all relevant application directories
-	  (e.g. Is cache dir writeable for httpd) (thanks Peter Hartl)
 	* disk full check (using Filesys::DiskSpace||DiskFree ?)
-	* check disk usage (using Filesys::DiskUsage ?)
 	
 	* create Test::Server::Smoke to try examples on smoke testing servers
 

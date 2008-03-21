@@ -27,6 +27,7 @@ use Test::More;
 use Test::Differences;
 use YAML::Syck 'LoadFile';
 use FindBin '$Bin';
+use Test::Server::Util qw(parse_size format_size);
 
 my $STAT_SIZE = 7;
 
@@ -41,7 +42,7 @@ plan 'skip_all' => "no configuration sections for 'find-huge-files: search-folde
 	);
 $config = $config->{'find-huge-files'};
 
-my $file_size_limit   = decode_size($config->{'file-size-limit'} || '100M');
+my $file_size_limit   = parse_size($config->{'file-size-limit'} || '100M');
 my $files_count_limit = $config->{'files-count-limit'} || 1000;
 my %ignore_file_named = map { $_ => 1} @{$config->{'ignore'}}
 	if ref $config->{'ignore'} eq 'ARRAY';
@@ -68,47 +69,6 @@ sub main {
 		
 	return 0;
 }
-
-sub decode_size {
-	my $size = shift;
-	
-	die 'failed to parse size: '.$size
-		if ($size !~ m/\b([0-9]+)\s*([MKG]?)\s*$/);
-	
-	$size    = $1;
-	my $unit = $2;
-	
-	if ($unit) {
-		  $unit eq 'G' ? $size *= 1024*1024*1024
-		: $unit eq 'M' ? $size *= 1024*1024
-		: $unit eq 'K' ? $size *= 1024
-		: die 'shoud never happend... but if enjoy! ;)';
-	}
-	
-	return $size;
-}
-
-sub format_size {
-	my $size = shift;
-	
-	my $unit = '';
-	
-	if ($size > 1024*2) {
-		$size = int($size/1024);
-		$unit = 'K';
-	}
-	if ($size > 1024*2) {
-		$size = int($size/1024);
-		$unit = 'M';
-	}
-	if ($size > 1024*2) {
-		$size = int($size/1024);
-		$unit = 'G';
-	}
-	
-	return $size.$unit;
-}
-
 
 sub find_huge_files {
 	my $filename          = shift;

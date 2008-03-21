@@ -32,6 +32,7 @@ use Test::Differences;
 use YAML::Syck 'LoadFile';
 use FindBin '$Bin';
 use Filesys::DiskUsage qw/du/;
+use Test::Server::Util qw(parse_size format_size);
 
 my $STAT_PERM = 2;
 my $STAT_UID  = 4;
@@ -69,7 +70,7 @@ sub main {
 			my $size = $file_checks{'max-size'};
 			if (defined $size) {
 				my $du_size = du($filename);
-				cmp_ok($du_size, '<', decode_size($size), 'check '.$filename.' size < '.$size)
+				cmp_ok($du_size, '<', parse_size($size), 'check '.$filename.' size < '.$size)
 					or diag($filename.' has '.format_size($du_size));
 			}
 			
@@ -146,48 +147,6 @@ sub check_recursively {
 	return @bad_files;
 }
 
-sub decode_size {
-	my $size = shift;
-	
-	return
-		if not defined $size;
-	
-	die 'failed to parse size: '.$size
-		if ($size !~ m/\b([0-9]+)\s*([MKG]?)\s*$/);
-	
-	$size    = $1;
-	my $unit = $2;
-	
-	if ($unit) {
-		  $unit eq 'G' ? $size *= 1024*1024*1024
-		: $unit eq 'M' ? $size *= 1024*1024
-		: $unit eq 'K' ? $size *= 1024
-		: die 'shoud never happend... but if enjoy! ;)';
-	}
-	
-	return $size;
-}
-
-sub format_size {
-	my $size = shift;
-	
-	my $unit = '';
-	
-	if ($size > 1024*2) {
-		$size = int($size/1024);
-		$unit = 'K';
-	}
-	if ($size > 1024*2) {
-		$size = int($size/1024);
-		$unit = 'M';
-	}
-	if ($size > 1024*2) {
-		$size = int($size/1024);
-		$unit = 'G';
-	}
-	
-	return $size.$unit;
-}
 
 
 __END__
@@ -199,5 +158,7 @@ recursive
 =head1 AUTHOR
 
 Jozef Kutej
+
+for the idea thanks to Peter Hartl
 
 =cut
