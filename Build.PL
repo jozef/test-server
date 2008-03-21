@@ -10,18 +10,18 @@ my $builder = Module::Build->new(
 	build_requires      => {
     },
 	requires            => {
-		'Test::More'        => 0,
-		'Test::Differences' => 0,
-		'Test::Exception'   => 0,
-    	'YAML::Syck'        => 0,
-    	'Socket'            => 0,
-    	'List::MoreUtils'   => 0,
-    	'Carp::Clan'        => 0,
-    	'Class::Accessor::Fast'
-    	                    => 0,
-    	'File::Slurp'       => 0,
+		'Test::More'            => 0,
+		'Test::Differences'     => 0,
+		'Test::Exception'       => 0,
+    	'YAML::Syck'            => 0,
+    	'Socket'                => 0,
+    	'List::MoreUtils'       => 0,
+    	'Carp::Clan'            => 0,
+    	'Class::Accessor::Fast' => 0,
+    	'File::Slurp'           => 0,
+    	'Filesys::DiskUsage'    => 0,
 	# Sys::Net dependecies
-    	'IO::Socket::INET'  => 0,
+    	'IO::Socket::INET'      => 0,
     },
     recommends          => {
     	'Net::DNS::Resolver'   => 0,

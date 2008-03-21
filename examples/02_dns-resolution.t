@@ -66,7 +66,7 @@ sub main {
 			eq_or_diff(
 				[ $answer->rr_with_type($rr_type) ],
 				[ sort @rr_values ],
-				'check dns '.$rr_type.' answer',
+				'check dns '.$rr_type.' answer for '.$domain,
 			);
 		}
 	}

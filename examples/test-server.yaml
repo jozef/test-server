@@ -68,3 +68,16 @@ find-huge-files:
         - /tmp
     ignore:
         - /tmp/huge
+
+folder-file:
+    /var/log:
+        user: root
+        group: root
+        max-size: 500M
+        perm: 755
+    /tmp/zero:
+        max-size: 2M
+    /etc:
+    /tmp/test:
+        perm: 2775
+        recurse: 1
