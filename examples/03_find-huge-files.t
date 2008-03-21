@@ -93,15 +93,15 @@ sub format_size {
 	
 	my $unit = '';
 	
-	if ($size > 1024*10) {
+	if ($size > 1024*2) {
 		$size = int($size/1024);
 		$unit = 'K';
 	}
-	if ($size > 1024*10) {
+	if ($size > 1024*2) {
 		$size = int($size/1024);
 		$unit = 'M';
 	}
-	if ($size > 1024*10) {
+	if ($size > 1024*2) {
 		$size = int($size/1024);
 		$unit = 'G';
 	}

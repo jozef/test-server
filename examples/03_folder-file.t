@@ -13,6 +13,7 @@ folder-file.t - check sizes and permittions
 	        group: root
 	        max-size: 500M
 	        perm: 755
+	        recurse: 1
 	    /var/tmp:
 	        max-size: 250M
         /tmp/non-existing:
@@ -49,86 +50,46 @@ $config = $config->{'folder-file'};
 exit main();
 
 sub main {
-	my $tests = 0;
-	my %folder_with_name = %{$config};
-	foreach my $folder (keys %folder_with_name) {
-		$tests++;
-		$tests+= keys %{$folder_with_name{$folder}};
-	}
+	my %file_with_name = %{$config};
+	my $tests = keys %file_with_name;
 
 	plan 'skip_all' => 'no tests defined'
 		if not $tests;
-	plan 'tests' => $tests;
+	plan 'no_plan';
 	
-	foreach my $folder (keys %folder_with_name) {
-		my %folder_checks = %{$folder_with_name{$folder}};
+	foreach my $filename (keys %file_with_name) {
+		my %file_checks = %{$file_with_name{$filename} || {}};
 		
 		SKIP: {
 			# check if readable for us
-			ok(-r $folder, 'is folder '.$folder.' readable')
-				or skip 'skipping '.$folder.', not readable', (keys %folder_checks);
+			ok(-r $filename, 'is folder '.$filename.' readable')
+				or skip 'skipping '.$filename.', not readable', 1;
 			
 			# check size
-			my $size = $folder_checks{'max-size'};
+			my $size = $file_checks{'max-size'};
 			if ($size) {
-				my $du_size = du($folder);
-				cmp_ok($du_size, '<', decode_size($size), 'check '.$folder.' size < '.$size)
-					or diag($folder.' has '.format_size($du_size));
+				my $du_size = du($filename);
+				cmp_ok($du_size, '<', decode_size($size), 'check '.$filename.' size < '.$size)
+					or diag($filename.' has '.format_size($du_size));
 			}
 			
-			my @folder_stat = stat($folder);
+			my @file_stat = stat($filename);
 			
-			# check user
-			my $uid;
-			my $user = $folder_checks{'user'};
-			if ($user) {
-				$uid = $user;
-				$uid = getpwnam($user)
-					if $user !~ m{^\s*\d+\s*$};
-				
-				# check the uid, if we have a number
-				if ((defined $uid) and ($uid =~ m{^\s*\d+\s*$})) {
-					my $folder_uid = $folder_stat[$STAT_UID];
-					is($folder_uid, $uid, 'check folder '.$folder.' uid');
-				}
-				else {
-					ok(0, 'wrong username: '.$user);
-					$uid = undef;
-				}
-			}
+			# get uid
+			my $uid = $file_checks{'user'};
+			$uid = getpwnam($uid)
+				if defined $uid and $uid !~ m{^\s*\d+\s*$};
 			
-			# check group
-			my $gid;
-			my $group = $folder_checks{'group'};
-			if ($group) {
-				$gid = $group;
-				$gid = getgrnam($group)
-					if $group !~ m{^\s*\d+\s*$};
-				
-				# check the gid, if we have a number
-				if ((defined $gid) and ($gid =~ m{^\s*\d+\s*$})) {
-					my $folder_gid = $folder_stat[$STAT_GID];
-					is($folder_gid, $gid, 'check folder '.$folder.' gid');
-				}
-				else {
-					ok(0, 'wrong group: '.$group);
-					$gid = undef;
-				}
-			}
-			
-			# check perms
-			my $perm = $folder_checks{'perm'};
-			if ($perm) {
-				my $folder_perm = sprintf '%lo', $folder_stat[$STAT_PERM] & 07777; # mask away the file type
-				is($folder_perm, $perm, 'check folder '.$folder.' mode')
-					or diag 'folder permissions in oct '.(sprintf '%lo', $folder_perm).' expecting '.$perm;
-			}
+			# get gid
+			my $gid = $file_checks{'group'};
+			$gid = getgrnam($gid)
+				if defined $gid and $gid !~ m{^\s*\d+\s*$};
 			
 			# check recursively
 			eq_or_diff(
-				[ check_recursively($folder, $folder_checks{'recurse'}, $uid, $gid, $perm) ],
+				[ check_recursively($filename, $file_checks{'recurse'}, $uid, $gid, $file_checks{'perm'}) ],
 				[],
-				'check uid,gid,permissions recursively',
+				'check uid,gid,permissions on '.$filename,
 			);
 		}
 	}	
@@ -156,7 +117,7 @@ sub check_recursively {
 			if ((defined $uid) and ($file_uid != $uid));
 		push @bad_files, 'bad gid for '.$filename.': '.$file_gid.' does not match '.$gid
 			if ((defined $gid) and ($file_gid != $gid));
-		push @bad_files, 'bad permissions for '.$filename.': '.(sprintf '%lo', $file_perm).' does not match '.$perm
+		push @bad_files, 'bad permissions for '.$filename.': '.$file_perm.' does not match '.$perm
 			if ((defined $perm) and ($file_perm != $perm));
 
 		if ($recurse and (-d $filename)) {
