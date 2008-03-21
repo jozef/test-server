@@ -1,6 +1,6 @@
 ---
 name: Test-Server
-version: 0.04
+version: 0.04_01
 author:
   - 'Jozef Kutej <jozef@kutej.net>'
 abstract: what about test driven administration?
@@ -9,6 +9,7 @@ requires:
   Carp::Clan: 0
   Class::Accessor::Fast: 0
   File::Slurp: 0
+  Filesys::DiskUsage: 0
   IO::Socket::INET: 0
   List::MoreUtils: 0
   Socket: 0
@@ -31,5 +32,5 @@ provides:
     version: 0.01
   Test::Server:
     file: lib/Test/Server.pm
-    version: 0.04
+    version: 0.04_01
 generated_by: Module::Build version 0.26
