@@ -123,7 +123,7 @@ sub check_recursively {
 		my @stat = stat($filename);
 		
 		my $file_uid  = $stat[$STAT_UID];
-		my $file_gid  = $stat[$STAT_UID];
+		my $file_gid  = $stat[$STAT_GID];
 		my $file_perm = sprintf '%lo', $stat[$STAT_PERM] & 07777;
 		
 		push @bad_files, 'bad uid for '.$filename.': '.$file_uid.' does not match '.$uid
