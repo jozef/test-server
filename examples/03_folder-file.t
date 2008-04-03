@@ -31,12 +31,14 @@ use Test::More;
 use Test::Differences;
 use YAML::Syck 'LoadFile';
 use FindBin '$Bin';
-use Filesys::DiskUsage qw/du/;
 use Test::Server::Util qw(parse_size format_size);
 
 my $STAT_PERM = 2;
 my $STAT_UID  = 4;
 my $STAT_GID  = 5;
+
+eval "use Filesys::DiskUsage qw/du/;";
+plan 'skip_all' => "need Filesys::DiskUsage to run web tests" if $@;
 
 my $config = LoadFile($Bin.'/test-server.yaml');
 

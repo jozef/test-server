@@ -153,6 +153,7 @@ Do you have any? Send it! Or even better send the .t file.
 	* I should write some easy example test for non perl admins
 	* disk full check (using Filesys::DiskSpace||DiskFree ?)
 	* traceroute and check first N (all?) hops to the host (Net::Traceroute::PurePerl ?)
+	* test if the dns responses are fast enought
 	
 	* create Test::Server::Smoke to try examples on smoke testing servers
 
