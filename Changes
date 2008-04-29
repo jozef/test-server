@@ -4,6 +4,8 @@ Revision history for Test-Server
     * added missing files to manifest
     * folder-file.t example
     * find-huge-files example
+    * timing of dns responses
+    
 
 0.03   
     * check if all nameservers in /etc/resolv.conf are reachable

@@ -100,6 +100,8 @@ check running processes
 
 query dns server and check for the answers
 
+check also if the dns responses are fast enought
+
 =item 02_resolv.conf.t
 
 query all nameserver-s in /etc/resolv.conf and make sure all are reachable.
@@ -144,6 +146,10 @@ For the idea thanks to Peter Hartl.
 There are no restrictions in Perl and there are no best solutions => so the
 sky is the limit! (Or we our self are the limit?)
 
+=head1 INSTALL
+
+Check out the F<Build.PL> for the list of examples that are installed in F</etc/t>.
+
 =head1 TODO
 
 Any wishes || good ideas for general server tests should go here.
@@ -153,7 +159,6 @@ Do you have any? Send it! Or even better send the .t file.
 	* I should write some easy example test for non perl admins
 	* disk full check (using Filesys::DiskSpace||DiskFree ?)
 	* traceroute and check first N (all?) hops to the host (Net::Traceroute::PurePerl ?)
-	* test if the dns responses are fast enought
 	
 	* create Test::Server::Smoke to try examples on smoke testing servers
 
@@ -164,7 +169,7 @@ L<http://en.wikipedia.org/wiki/Test_Anything_Protocol>
 and a book "Perl Testing: A Developer's Notebook"
 
 And if you like automated "thinks" check out also L<Sysadm::Install>
-for system admin scripting. Quite nice.
+for system admin scripting.
 
 =head1 AUTHOR
 

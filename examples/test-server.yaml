@@ -7,6 +7,10 @@ dns-resolution:
         bratislava.pm.org:
             A: 81.89.49.242
             CNAME: camel.cle.sk
+        en.wikipedia.org:
+            count: 5
+            max-time: 300
+            time-failed: 1
 
 running-processes:
     should-run:
@@ -81,3 +85,4 @@ folder-file:
     /tmp/test:
         perm: 2775
         recurse: 1
+

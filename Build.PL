@@ -34,6 +34,24 @@ my $builder = Module::Build->new(
     create_makefile_pl  => 'traditional',
     sign                => 1,
     create_readme       => 1,
+    
+    server_testing_files => {
+		'examples/01_hostname-and-interfaces.t' => '01_hostname-and-interfaces.t',
+		'examples/01_running-processes.t'       => '01_running-processes.t',
+		'examples/02_disk-free.t'               => '02_disk-free.t',
+		'examples/02_dns-resolution.t'          => '02_dns-resolution.t',
+		'examples/02_resolv.conf.t'             => '02_resolv.conf.t',
+		'examples/02_time-sync.t'               => '02_time-sync.t',
+		'examples/03_cmd-output.t'              => '03_cmd-output.t',
+		'examples/03_find-huge-files.t'         => '03_find-huge-files.t',
+		'examples/03_folder-file.t'             => '03_folder-file.t',
+		'examples/03_open-ports.t'              => '03_open-ports.t',
+		'examples/03_sites-ok.t'                => '03_sites-ok.t',
+	},
+	
+	install_path => {
+		'server_testing' => '/etc/t',
+	}
 );
 
 $builder->create_build_script();
