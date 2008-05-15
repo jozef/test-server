@@ -86,3 +86,12 @@ folder-file:
         perm: 2775
         recurse: 1
 
+disk-free:
+    /:
+        max-used  : 90%
+        max-inodes: 80%
+    /var:
+        max-used  : 100G
+        max-inodes: 200K
+    /home:
+    /usr:        

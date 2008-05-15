@@ -102,6 +102,10 @@ query dns server and check for the answers
 
 check also if the dns responses are fast enought
 
+=item 02_disk-free.t
+
+disk free/full check
+
 =item 02_resolv.conf.t
 
 query all nameserver-s in /etc/resolv.conf and make sure all are reachable.
@@ -157,7 +161,6 @@ Do you have any? Send it! Or even better send the .t file.
 
 	* check if all the interfaces has dns revers rr that properly resolves back
 	* I should write some easy example test for non perl admins
-	* disk full check (using Filesys::DiskSpace||DiskFree ?)
 	* traceroute and check first N (all?) hops to the host (Net::Traceroute::PurePerl ?)
 	
 	* create Test::Server::Smoke to try examples on smoke testing servers

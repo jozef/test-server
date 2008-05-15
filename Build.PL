@@ -22,6 +22,7 @@ my $builder = Module::Build->new(
     	'Filesys::DiskUsage'    => 0,
 	# Sys::Net dependecies
     	'IO::Socket::INET'      => 0,
+    	'Filesys::DiskSpace'    => 0,
     },
     recommends          => {
     	'Net::DNS::Resolver'   => 0,
@@ -34,7 +35,10 @@ my $builder = Module::Build->new(
     create_makefile_pl  => 'traditional',
     sign                => 1,
     create_readme       => 1,
-    
+);
+
+=cut    
+
     server_testing_files => {
 		'examples/01_hostname-and-interfaces.t' => '01_hostname-and-interfaces.t',
 		'examples/01_running-processes.t'       => '01_running-processes.t',
@@ -52,6 +56,7 @@ my $builder = Module::Build->new(
 	install_path => {
 		'server_testing' => '/etc/t',
 	}
-);
+
+=cut
 
 $builder->create_build_script();
