@@ -5,6 +5,7 @@ examples/01_running-processes.t
 examples/02_dns-resolution.t
 examples/02_resolv.conf.t
 examples/02_time-sync.t
+examples/02_disk-free.t
 examples/03_cmd-output.t
 examples/03_find-huge-files.t
 examples/03_folder-file.t

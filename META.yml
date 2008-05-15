@@ -1,14 +1,17 @@
 ---
 name: Test-Server
-version: 0.04_02
+version: 0.05_01
 author:
   - 'Jozef Kutej <jozef@kutej.net>'
 abstract: what about test driven administration?
 license: perl
+resources:
+  license: http://dev.perl.org/licenses/
 requires:
   Carp::Clan: 0
   Class::Accessor::Fast: 0
   File::Slurp: 0
+  Filesys::DiskSpace: 0
   Filesys::DiskUsage: 0
   IO::Socket::INET: 0
   List::MoreUtils: 0
@@ -32,5 +35,8 @@ provides:
     version: 0.01
   Test::Server:
     file: lib/Test/Server.pm
-    version: 0.04_02
-generated_by: Module::Build version 0.26
+    version: 0.05_01
+generated_by: Module::Build version 0.280801
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

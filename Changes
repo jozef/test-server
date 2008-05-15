@@ -5,7 +5,8 @@ Revision history for Test-Server
     * folder-file.t example
     * find-huge-files example
     * timing of dns responses
-    
+#    * install tests to /etc/t, commented out
+    * disk-free checking
 
 0.03   
     * check if all nameservers in /etc/resolv.conf are reachable
