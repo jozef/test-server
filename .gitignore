@@ -1,0 +1,10 @@
+
+# /
+/Build
+/MANIFEST.bak
+/_build
+/Test-Server-*
+/blib
+/README
+/META.yml
+/Makefile.PL
