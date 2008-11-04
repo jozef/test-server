@@ -163,6 +163,11 @@ Do you have any? Send it! Or even better send the .t file.
 	* I should write some easy example test for non perl admins
 	* traceroute and check first N (all?) hops to the host (Net::Traceroute::PurePerl ?)
 	* connect to database and check if count of rows in all table doesn't exceed some number
+	* create message.t that will check if some file has data. if not output one passed test
+	  if not makes one failed test per line in that file (can be used to notify monitoring
+	  from all sorts of programs)
+	* wakeup.t will produce a fail test after certain ammount of time to wakeup monitoring
+	  if it fails to notify them then something is wrong with a setup
 	
 	* create Test::Server::Smoke to try examples on smoke testing servers
 
