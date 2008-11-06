@@ -95,3 +95,7 @@ disk-free:
         max-inodes: 200K
     /home:
     /usr:        
+
+message:
+    - messages.log
+    - messages2.log

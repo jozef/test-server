@@ -116,6 +116,12 @@ compare local machine time with a ntp server to make sure both are in the sync.
 
 For the idea thanks to Emmanuel Rodriguez Santiago.
 
+=item 02_messages.t
+
+Checks a file(s) and generates failed tests on every line found there.
+Allows any program in the system to pass messages to the monitoring simply by
+adding line into a file
+
 =item 03_sites-ok.t
 
 check web sites
@@ -163,9 +169,6 @@ Do you have any? Send it! Or even better send the .t file.
 	* I should write some easy example test for non perl admins
 	* traceroute and check first N (all?) hops to the host (Net::Traceroute::PurePerl ?)
 	* connect to database and check if count of rows in all table doesn't exceed some number
-	* create message.t that will check if some file has data. if not output one passed test
-	  if not makes one failed test per line in that file (can be used to notify monitoring
-	  from all sorts of programs)
 	* wakeup.t will produce a fail test after certain ammount of time to wakeup monitoring
 	  if it fails to notify them then something is wrong with a setup
 	
