@@ -118,13 +118,14 @@ sub Net::DNS::Packet::rr_with_type {
 		next if $rr->type ne $rr_type;
 		
 		push @rrs_answer, (
-			$rr_type eq 'A'     ? $rr->address :
-			$rr_type eq 'CNAME' ? $rr->cname   :
+			$rr_type eq 'A'     ? $rr->address  :
+			$rr_type eq 'CNAME' ? $rr->cname    :
+			$rr_type eq 'PTR'   ? $rr->ptrdname :
 			$rr->string,
 		);
 	}
 	
-	return sort @rrs_answer;
+	return (wantarray ? sort @rrs_answer : shift @rrs_answer);
 }
 
 

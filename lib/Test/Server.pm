@@ -148,6 +148,9 @@ File directory permissions and sizes for a directories
 
 For the idea thanks to Peter Hartl.
 
+=item 03_interfaces-ptr.t
+
+check if interfaces has a PTR record which properly resolves back to interface ip
 
 =back
 
@@ -165,7 +168,6 @@ Check out the F<Build.PL> for the list of examples that are installed in F</etc/
 Any wishes || good ideas for general server tests should go here.
 Do you have any? Send it! Or even better send the .t file.
 
-	* check if all the interfaces has dns revers rr that properly resolves back
 	* I should write some easy example test for non perl admins
 	* traceroute and check first N (all?) hops to the host (Net::Traceroute::PurePerl ?)
 	* connect to database and check if count of rows in all table doesn't exceed some number

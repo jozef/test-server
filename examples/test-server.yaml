@@ -99,3 +99,9 @@ disk-free:
 message:
     - messages.log
     - messages2.log
+
+interfaces-ptr:
+    ignore:
+        - tap0
+        - br0
+        - "br1:"
