@@ -7,7 +7,8 @@ Revision history for Test-Server
     * folder-file.t example added
     * Test::Server::Util module added
     * messages.t example added
-    * interfaces-ptr example added
+    * interfaces-ptr.t example added
+    * wakeup.t example added
 
 0.04
     * added missing files to manifest

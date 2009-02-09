@@ -105,3 +105,7 @@ interfaces-ptr:
         - tap0
         - br0
         - "br1:"
+
+wakeup:
+    period  : 30d
+    filename: /var/tmp/wakeup-state
