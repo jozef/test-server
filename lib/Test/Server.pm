@@ -159,6 +159,11 @@ monitoring team is receiving alarms properly. If the admins finds out that this
 test fails for couple of days without anyone notice then there is something
 wrong.
 
+=item 03_net-hops.t
+
+Does traceroute and check first or last N network hops to the host. It's using system
+C<traceroute> program.
+
 =back
 
 =head1 sky
@@ -175,10 +180,7 @@ Check out the F<Build.PL> for the list of examples that are installed in F</etc/
 Any wishes || good ideas for general server tests should go here.
 Do you have any? Send it! Or even better send the .t file.
 
-	* traceroute and check first N (all?) hops to the host (Net::Traceroute::PurePerl ?)
 	* connect to database and check if count of rows in all table doesn't exceed some number
-	
-	* create Test::Server::Smoke to try examples on smoke testing servers
 
 =head1 LINKS
 

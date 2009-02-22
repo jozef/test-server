@@ -9,6 +9,7 @@ Revision history for Test-Server
     * messages.t example added
     * interfaces-ptr.t example added
     * wakeup.t example added
+    * net-hops.t example added
 
 0.04
     * added missing files to manifest

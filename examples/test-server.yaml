@@ -109,3 +109,19 @@ interfaces-ptr:
 wakeup:
     period  : 30d
     filename: /var/tmp/wakeup-state
+
+net-hops:
+    -
+        hostname: ba.pm.org
+        hops:
+            - 10.0.0.138
+            - 62.47.95.239
+            - 172.19.63.41
+    -
+        hostname: ba.pm.org
+        ttl: 50
+        skip: 4
+        last-hops:
+            - 217.119.114.30
+            - 81.89.48.168
+            - 81.89.49.242
