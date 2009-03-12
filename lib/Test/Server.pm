@@ -50,7 +50,7 @@ similar solutions like this...)
 use warnings;
 use strict;
 
-our $VERSION = '0.05_02';
+our $VERSION = '0.05';
 
 =head1 METHODS
 
