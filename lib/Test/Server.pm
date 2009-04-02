@@ -166,6 +166,17 @@ C<traceroute> program.
 
 =back
 
+=head2 TODO
+
+=over 4
+
+=item 03_smart.t
+
+run `smartctl -q errorsonly -H -l selftest /dev/hda` and produce error if there will
+be some output
+
+=back
+
 =head1 sky
 
 There are no restrictions in Perl and there are no best solutions => so the
