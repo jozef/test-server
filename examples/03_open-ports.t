@@ -47,7 +47,11 @@ sub main {
 	my $number_of_tests = 0;
 	foreach my $host (keys %$connect) {
 		foreach my $port (keys %{$connect->{$host}}) {
-			$number_of_tests += 2;
+			# port connection test
+			$number_of_tests ++;
+			# service check for all besides closed ports
+			$number_of_tests ++
+				if not (($connect->{$host}->{$port} || '') eq 'closed');
 		}
 	}
 	plan 'tests' => $number_of_tests;
@@ -64,16 +68,32 @@ sub main {
 			
 			my $socket = IO::Socket::INET->new(
 				PeerAddr => $host,
-	            PeerPort => $port,
-	            Proto    => $proto,
+				PeerPort => $port,
+				Proto    => $proto,
 			);
+			
+			# check for closed ports
+			if ($service eq 'closed') {
+				ok(
+					!$socket,
+					'connect to '
+					.$host
+					.' port '
+					.$port
+					.'/'
+					.$proto
+					.' filtered'
+				);
+				next;
+			}
+			
 			ok(
 				$socket,
 				'connect to '
 				.$host
 				.' port '
 				.$port
-				.' '
+				.'/'
 				.$proto
 			);
 			

@@ -34,6 +34,9 @@ open-ports:
             80: http
         camel.cle.sk:
             443: https
+        koala.cle.sk:
+            138: closed
+            445: closed
 
 resolv.conf:
     dns_retry  : 3

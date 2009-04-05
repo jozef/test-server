@@ -1,5 +1,8 @@
 Revision history for Test-Server
 
+0.06    
+    * check also for closed ports
+
 0.05    06. Nov 2008
     * disk-free.t example added
     * dns-resolution.t example added
