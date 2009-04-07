@@ -175,6 +175,10 @@ C<traceroute> program.
 run `smartctl -q errorsonly -H -l selftest /dev/hda` and produce error if there will
 be some output
 
+=item 03_reachable.t
+
+check with Net::Ping if hosts are reachable
+
 =back
 
 =head1 sky
