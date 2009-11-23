@@ -197,11 +197,13 @@ Do you have any? Send it! Or even better send the .t file.
 
 	* connect to database and check if count of rows in all table doesn't exceed some number
 
-=head1 LINKS
+=head1 SEE ALSO
 
 L<http://testanything.org/>,
 L<http://en.wikipedia.org/wiki/Test_Anything_Protocol>
 and a book "Perl Testing: A Developer's Notebook"
+
+L<Test::System>
 
 If you like automation check out also L<Sysadm::Install> for system admin scripting.
 
